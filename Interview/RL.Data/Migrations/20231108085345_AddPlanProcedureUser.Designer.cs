@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RL.Data;
 
@@ -10,9 +11,10 @@ using RL.Data;
 namespace RL.Data.Migrations
 {
     [DbContext(typeof(RLContext))]
-    partial class RLContextModelSnapshot : ModelSnapshot
+    [Migration("20231108085345_AddPlanProcedureUser")]
+    partial class AddPlanProcedureUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.1");
@@ -862,7 +864,7 @@ namespace RL.Data.Migrations
             modelBuilder.Entity("RL.Data.DataModels.PlanProcdureUser", b =>
                 {
                     b.HasOne("RL.Data.DataModels.Plan", "Plan")
-                        .WithMany("PlanProceduresUsers")
+                        .WithMany()
                         .HasForeignKey("PlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -908,8 +910,6 @@ namespace RL.Data.Migrations
             modelBuilder.Entity("RL.Data.DataModels.Plan", b =>
                 {
                     b.Navigation("PlanProcedures");
-
-                    b.Navigation("PlanProceduresUsers");
                 });
 #pragma warning restore 612, 618
         }

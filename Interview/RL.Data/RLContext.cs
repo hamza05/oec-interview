@@ -9,6 +9,8 @@ public class RLContext : DbContext
     public DbSet<PlanProcedure> PlanProcedures { get; set; }
     public DbSet<Procedure> Procedures { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<PlanProcdureUser> PlanProcdureUser { get; set; }
+
 
     public RLContext() { }
     public RLContext(DbContextOptions<RLContext> options) : base(options) { }
